@@ -37,17 +37,13 @@ namespace Zork
                     case Commands.WEST:
                         outputString = Move(command) ? $"You moved {command}." : "The way is shut!";
                         break;
-
                     default:
                         outputString = ("Unrecognized command.");
                         break;
                 }
 
                 Console.WriteLine(outputString);
-
             }
-
-
         }
 
         private static bool Move(Commands command)
@@ -66,6 +62,9 @@ namespace Zork
                 case Commands.WEST when LocationColumn > 0:
                     LocationColumn--;
                     didMove = true;
+                    break;
+                default:
+                    didMove = false;
                     break;
             }
 
