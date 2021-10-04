@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Zork
 {
@@ -42,8 +43,6 @@ namespace Zork
 
                 Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
-
-
 
                 string outputString;
                 switch (command)
@@ -134,20 +133,14 @@ namespace Zork
         {
             const string fieldDelimeter = "##";
             const int expectedFieldCount = 2;
-
-            string[] lines = File.ReadAllLines(roomsFilename);
-            foreach (string line in lines)
+            var roomQuery = from line in File.ReadAllLines(roomsFilename)
+                            let fields = line.Split(fieldDelimeter)
+                            where fields.Length == expectedFieldCount
+                            select (Name: fields[(int)Fields.Name],
+                                    Description: fields[(int)Fields.Description]);
+            foreach (var (Name, Description) in roomQuery)
             {
-                string[] fields = line.Split(fieldDelimeter);
-                if (fields.Length != expectedFieldCount)
-                {
-                    throw new InvalidDataException("Invalid record.");
-                }
-
-                string name = fields[(int)Fields.Name];
-                string description = fields[(int)Fields.Description];
-
-                RoomMap[name].Description = description;
+                RoomMap[Name].Description = Description;
             }
         }
 
