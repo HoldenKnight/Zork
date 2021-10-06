@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -22,10 +23,10 @@ namespace Zork
 
         static void Main(string[] args)
         {
-            const string defaultRoomsFilename = "Rooms.txt";
+            const string defaultRoomsFilename = "Rooms.json";
 
             string roomsFilename = (args.Length > 0 ? args[(int)CommandLineArguments.RoomsFilename] : defaultRoomsFilename);
-            InizializeRoomDescriptions(roomsFilename);
+            InizializeRooms(roomsFilename);
 
             Console.WriteLine("Welcome to Zork!");
 
@@ -112,43 +113,10 @@ namespace Zork
 
         }
 
-        private static readonly Dictionary<string, Room> RoomMap;
+        private static void InizializeRooms(string roomsFilename) =>
+            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFilename));
 
-        static Program()
-        {
-            RoomMap = new Dictionary<string, Room>();
-            foreach (Room room in Rooms)
-            {
-                RoomMap[room.Name] = room;
-            }
-        }
-
-        private enum Fields
-        {
-            Name = 0,
-            Description
-        }
-
-        private static void InizializeRoomDescriptions(string roomsFilename)
-        {
-            const string fieldDelimeter = "##";
-            const int expectedFieldCount = 2;
-            var roomQuery = from line in File.ReadAllLines(roomsFilename)
-                            let fields = line.Split(fieldDelimeter)
-                            where fields.Length == expectedFieldCount
-                            select (Name: fields[(int)Fields.Name],
-                                    Description: fields[(int)Fields.Description]);
-            foreach (var (Name, Description) in roomQuery)
-            {
-                RoomMap[Name].Description = Description;
-            }
-        }
-
-        private static readonly Room[,] Rooms = {
-            { new Room("Rocky Trail"), new Room("South of House"), new Room("Canyon View") },
-            { new Room("Forest"), new Room("West of House"), new Room("Behind House") },
-            { new Room("Dense Forest"), new Room("North of House"), new Room("Clearing") }
-        };
+        private static Room[,] Rooms;
 
         private static (int Row, int Column) Location = (1, 1);
     }
