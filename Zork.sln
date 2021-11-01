@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork", "Zork\Zork.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2D61434D-F537-4FEC-9736-C62D9A31B918}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork.Common", "Zork.Common\Zork.Common.csproj", "{CE4FF318-8B91-4881-9FCE-227DB28BA573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zork.Builder", "Zork.Builder\Zork.Builder.csproj", "{8D7FEDA0-4E85-462F-A443-253583A86A68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{7B97125A-8B3D-4B8D-A579-1BA8E8A43EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B97125A-8B3D-4B8D-A579-1BA8E8A43EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B97125A-8B3D-4B8D-A579-1BA8E8A43EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4FF318-8B91-4881-9FCE-227DB28BA573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4FF318-8B91-4881-9FCE-227DB28BA573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4FF318-8B91-4881-9FCE-227DB28BA573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4FF318-8B91-4881-9FCE-227DB28BA573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7FEDA0-4E85-462F-A443-253583A86A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7FEDA0-4E85-462F-A443-253583A86A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7FEDA0-4E85-462F-A443-253583A86A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7FEDA0-4E85-462F-A443-253583A86A68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
