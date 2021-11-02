@@ -1,15 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Zork;
+using Zork_Builder.Forms;
 
 namespace Zork_Builder
 {
@@ -39,12 +34,29 @@ namespace Zork_Builder
 
         private void SaveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void AddRoom_Click(object sender, EventArgs e)
+        {
+            using (AddRoomForm addRoomForm = new AddRoomForm())
+            {
+                if (addRoomForm.ShowDialog() == DialogResult.OK)
+                {
+                    Room existingRoom = ViewModel.Rooms.FirstOrDefault(Room => Room.Name.Equals(addRoomForm.RoomName, StringComparison.OrdinalIgnoreCase));
+                    if (existingRoom != null)
+                    {
+                        MessageBox.Show("Room already exists", "ZorkBuilder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    Room room = new Room(addRoomForm.RoomName);
+                }
+            }
         }
     }
 }

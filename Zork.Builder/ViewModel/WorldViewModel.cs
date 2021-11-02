@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
 using Zork;
 
 namespace Zork_Builder
 {
-    internal class WorldViewModel
+    internal class WorldViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public BindingList<Room> Rooms { get; set; }
 
         public World World

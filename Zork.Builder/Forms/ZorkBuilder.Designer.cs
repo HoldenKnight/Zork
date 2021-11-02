@@ -29,6 +29,7 @@ namespace Zork_Builder
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.MenuStrip menuStrip1;
             System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
             System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
@@ -49,6 +50,7 @@ namespace Zork_Builder
             System.Windows.Forms.Label StartingLocatinLabel;
             System.Windows.Forms.Label WelcomeTextLabel;
             this.RoomListBox = new System.Windows.Forms.ListBox();
+            this.roomsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
@@ -61,6 +63,7 @@ namespace Zork_Builder
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +84,9 @@ namespace Zork_Builder
             StartingLocatinLabel = new System.Windows.Forms.Label();
             WelcomeTextLabel = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -113,7 +118,7 @@ namespace Zork_Builder
             // 
             createToolStripMenuItem.Name = "createToolStripMenuItem";
             createToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            createToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            createToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             createToolStripMenuItem.Text = "&Create";
             createToolStripMenuItem.Click += new System.EventHandler(this.CreateToolStripMenuItem_Click);
             // 
@@ -121,7 +126,7 @@ namespace Zork_Builder
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
             openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            openToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             openToolStripMenuItem.Text = "&Open";
             openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
@@ -129,7 +134,7 @@ namespace Zork_Builder
             // 
             saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
             saveToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            saveToolStripMenuItem1.Size = new System.Drawing.Size(189, 26);
+            saveToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             saveToolStripMenuItem1.Text = "&Save";
             saveToolStripMenuItem1.Click += new System.EventHandler(this.SaveToolStripMenuItem1_Click);
             // 
@@ -137,14 +142,14 @@ namespace Zork_Builder
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            saveAsToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             saveAsToolStripMenuItem.Text = "Save As";
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            closeToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            closeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             closeToolStripMenuItem.Text = "E&xit";
             closeToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
             // 
@@ -202,7 +207,7 @@ namespace Zork_Builder
             label6.Location = new System.Drawing.Point(97, 89);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(88, 28);
-            label6.TabIndex = 7;
+            label6.TabIndex = 5;
             label6.Text = "North";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -214,7 +219,7 @@ namespace Zork_Builder
             label7.Location = new System.Drawing.Point(97, 117);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(88, 28);
-            label7.TabIndex = 8;
+            label7.TabIndex = 7;
             label7.Text = "South";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -226,7 +231,7 @@ namespace Zork_Builder
             label8.Location = new System.Drawing.Point(97, 145);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(88, 28);
-            label8.TabIndex = 10;
+            label8.TabIndex = 9;
             label8.Text = "East";
             label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -238,7 +243,7 @@ namespace Zork_Builder
             label9.Location = new System.Drawing.Point(97, 173);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(88, 32);
-            label9.TabIndex = 12;
+            label9.TabIndex = 11;
             label9.Text = "West";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -249,7 +254,7 @@ namespace Zork_Builder
             RoomListLabel.Location = new System.Drawing.Point(40, 65);
             RoomListLabel.Name = "RoomListLabel";
             RoomListLabel.Size = new System.Drawing.Size(71, 17);
-            RoomListLabel.TabIndex = 5;
+            RoomListLabel.TabIndex = 1;
             RoomListLabel.Text = "Room List";
             // 
             // RoomInformation
@@ -259,7 +264,7 @@ namespace Zork_Builder
             RoomInformation.Location = new System.Drawing.Point(202, 65);
             RoomInformation.Name = "RoomInformation";
             RoomInformation.Size = new System.Drawing.Size(119, 17);
-            RoomInformation.TabIndex = 6;
+            RoomInformation.TabIndex = 5;
             RoomInformation.Text = "Room Information";
             // 
             // StartingLocatinLabel
@@ -269,7 +274,7 @@ namespace Zork_Builder
             StartingLocatinLabel.Location = new System.Drawing.Point(40, 317);
             StartingLocatinLabel.Name = "StartingLocatinLabel";
             StartingLocatinLabel.Size = new System.Drawing.Size(115, 17);
-            StartingLocatinLabel.TabIndex = 7;
+            StartingLocatinLabel.TabIndex = 6;
             StartingLocatinLabel.Text = "Starting Location";
             // 
             // WelcomeTextLabel
@@ -284,12 +289,19 @@ namespace Zork_Builder
             // 
             // RoomListBox
             // 
+            this.RoomListBox.DataSource = this.roomsBindingSource;
+            this.RoomListBox.DisplayMember = "Name";
             this.RoomListBox.FormattingEnabled = true;
             this.RoomListBox.ItemHeight = 16;
             this.RoomListBox.Location = new System.Drawing.Point(43, 85);
             this.RoomListBox.Name = "RoomListBox";
             this.RoomListBox.Size = new System.Drawing.Size(156, 164);
-            this.RoomListBox.TabIndex = 1;
+            this.RoomListBox.TabIndex = 2;
+            this.RoomListBox.ValueMember = "Description";
+            // 
+            // roomsBindingSource
+            // 
+            this.roomsBindingSource.DataSource = typeof(Zork.Room);
             // 
             // tableLayoutPanel1
             // 
@@ -324,6 +336,7 @@ namespace Zork_Builder
             // 
             // richTextBox1
             // 
+            this.richTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Description", true));
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(191, 31);
             this.richTextBox1.Name = "richTextBox1";
@@ -337,16 +350,17 @@ namespace Zork_Builder
             this.richTextBox2.Location = new System.Drawing.Point(191, 92);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(280, 22);
-            this.richTextBox2.TabIndex = 5;
+            this.richTextBox2.TabIndex = 6;
             this.richTextBox2.Text = "";
             // 
             // richTextBox3
             // 
+            this.richTextBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomsBindingSource, "Name", true));
             this.richTextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox3.Location = new System.Drawing.Point(191, 3);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(280, 22);
-            this.richTextBox3.TabIndex = 6;
+            this.richTextBox3.TabIndex = 1;
             this.richTextBox3.Text = "";
             // 
             // richTextBox5
@@ -355,7 +369,7 @@ namespace Zork_Builder
             this.richTextBox5.Location = new System.Drawing.Point(191, 120);
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.Size = new System.Drawing.Size(280, 22);
-            this.richTextBox5.TabIndex = 9;
+            this.richTextBox5.TabIndex = 8;
             this.richTextBox5.Text = "";
             // 
             // richTextBox6
@@ -364,7 +378,7 @@ namespace Zork_Builder
             this.richTextBox6.Location = new System.Drawing.Point(191, 148);
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.Size = new System.Drawing.Size(280, 22);
-            this.richTextBox6.TabIndex = 11;
+            this.richTextBox6.TabIndex = 10;
             this.richTextBox6.Text = "";
             // 
             // richTextBox7
@@ -373,7 +387,7 @@ namespace Zork_Builder
             this.richTextBox7.Location = new System.Drawing.Point(191, 176);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.Size = new System.Drawing.Size(280, 26);
-            this.richTextBox7.TabIndex = 13;
+            this.richTextBox7.TabIndex = 12;
             this.richTextBox7.Text = "";
             // 
             // AddRoom
@@ -384,6 +398,7 @@ namespace Zork_Builder
             this.AddRoom.TabIndex = 3;
             this.AddRoom.Text = "Add";
             this.AddRoom.UseVisualStyleBackColor = true;
+            this.AddRoom.Click += new System.EventHandler(this.AddRoom_Click);
             // 
             // DeleteRoom
             // 
@@ -409,7 +424,7 @@ namespace Zork_Builder
             this.comboBox1.Location = new System.Drawing.Point(43, 337);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 0;
+            this.comboBox1.TabIndex = 7;
             // 
             // richTextBox4
             // 
@@ -442,8 +457,10 @@ namespace Zork_Builder
             this.Text = "Zork Builder";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomsBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,6 +480,8 @@ namespace Zork_Builder
         private System.Windows.Forms.RichTextBox richTextBox5;
         private System.Windows.Forms.RichTextBox richTextBox6;
         private System.Windows.Forms.RichTextBox richTextBox7;
+        private System.Windows.Forms.BindingSource roomsBindingSource;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
