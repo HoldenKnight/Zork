@@ -32,7 +32,6 @@ namespace Zork_Builder
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.MenuStrip menuStrip;
             System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-            System.Windows.Forms.ToolStripMenuItem createToolStripMenuItem;
             System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
             System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
             System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
@@ -68,7 +67,6 @@ namespace Zork_Builder
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             menuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -104,7 +102,6 @@ namespace Zork_Builder
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            createToolStripMenuItem,
             openToolStripMenuItem,
             toolStripMenuItem1,
             this.saveToolStripMenuItem,
@@ -114,14 +111,6 @@ namespace Zork_Builder
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             fileToolStripMenuItem.Text = "File";
-            // 
-            // createToolStripMenuItem
-            // 
-            createToolStripMenuItem.Name = "createToolStripMenuItem";
-            createToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            createToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            createToolStripMenuItem.Text = "&Create";
-            createToolStripMenuItem.Click += new System.EventHandler(this.CreateToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 

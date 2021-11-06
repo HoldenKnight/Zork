@@ -68,11 +68,8 @@ namespace Zork_Builder
 
             IsWorldLoaded = false;
         }
-        #region File Controls
-        private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
+        #region File Controls
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -111,6 +108,12 @@ namespace Zork_Builder
         private void MenuSaveToolStripMenuItem_Click(object sender, EventArgs e) => ViewModel.SaveWorld(ViewModel.filename);
         #endregion
 
+        #region Room List Controls
+        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DeleteRoomButton.Enabled = RoomListBox.SelectedItem != null;
+        }
+
         private void AddRoom_Click(object sender, EventArgs e)
         {
             using (AddRoomForm addRoomForm = new AddRoomForm())
@@ -128,11 +131,6 @@ namespace Zork_Builder
             }
         }
 
-        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DeleteRoomButton.Enabled = RoomListBox.SelectedItem != null;
-        }
-
         private void DeleteRoomButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to delete the room?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -141,6 +139,7 @@ namespace Zork_Builder
                 RoomListBox.SelectedItem = ViewModel.Rooms.FirstOrDefault();
             }
         }
+        #endregion
 
         private bool _IsWorldLoaded;
 
