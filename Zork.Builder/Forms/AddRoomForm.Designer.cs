@@ -36,9 +36,19 @@ namespace Zork_Builder.Forms
             nameLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(8, 9);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(45, 17);
+            nameLabel.TabIndex = 0;
+            nameLabel.Text = "Name";
+            // 
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Enabled = false;
             this.okButton.Location = new System.Drawing.Point(183, 88);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 25);
@@ -63,15 +73,6 @@ namespace Zork_Builder.Forms
             this.nameTextBox.Size = new System.Drawing.Size(328, 22);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
-            // 
-            // nameLabel
-            // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(8, 9);
-            nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(45, 17);
-            nameLabel.TabIndex = 0;
-            nameLabel.Text = "Name";
             // 
             // AddRoomForm
             // 

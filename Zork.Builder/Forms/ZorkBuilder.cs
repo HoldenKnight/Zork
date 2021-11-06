@@ -51,7 +51,7 @@ namespace Zork_Builder
             _WorldDependentControls = new Control[]
             {
                 RoomListBox,
-                AddRoomButton,
+                //AddRoomButton,
                 DeleteRoomButton,
                 roomInformationLayoutPanel,
                 startingLocationComboBox,

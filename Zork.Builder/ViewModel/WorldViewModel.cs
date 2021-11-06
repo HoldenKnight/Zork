@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Zork;
@@ -9,7 +8,9 @@ namespace Zork_Builder
 {
     internal class WorldViewModel : INotifyPropertyChanged
     {
+#pragma warning disable CS0067
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0067
 
         public string filename { get; set; }
 
