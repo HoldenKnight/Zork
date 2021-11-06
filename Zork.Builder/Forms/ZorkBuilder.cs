@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Zork;
@@ -10,14 +11,64 @@ namespace Zork_Builder
 {
     public partial class ZorkBuilder : Form
     {
-        internal WorldViewModel ViewModel { get; private set; }
-       
+        public static string AssemblyTitle = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
+
+        private WorldViewModel ViewModel
+        {
+            get => _ViewModel;
+            set 
+            {
+                if (_ViewModel != value)
+                {
+                    _ViewModel = value;
+                }
+            }
+        }
+
+        private bool IsWorldLoaded
+        {
+            get => _IsWorldLoaded;
+            set
+            {
+                _IsWorldLoaded = value;
+                foreach (var control in _WorldDependentControls)
+                {
+                    control.Enabled = _IsWorldLoaded;
+                }
+
+                foreach (var MenuItem in _WorldDependentMenuItems)
+                {
+                    MenuItem.Enabled = _IsWorldLoaded;
+                }
+            }
+        }
+
         public ZorkBuilder()
         {
             InitializeComponent();
             ViewModel = new WorldViewModel();
-        }
 
+            _WorldDependentControls = new Control[]
+            {
+                RoomListBox,
+                AddRoomButton,
+                DeleteRoomButton,
+                roomInformationLayoutPanel,
+                startingLocationComboBox,
+                welcomeTextTextBox
+            };
+
+
+            _WorldDependentMenuItems = new ToolStripMenuItem[]
+            {
+                saveToolStripMenuItem,
+                saveAsToolStripMenuItem,
+                menuSaveToolStripMenuItem
+            };
+
+            IsWorldLoaded = false;
+        }
+        #region File Controls
         private void CreateToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -27,20 +78,38 @@ namespace Zork_Builder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string json = File.ReadAllText(openFileDialog.FileName);
-                ViewModel.World = JsonConvert.DeserializeObject<World>(json);
+                try
+                {
+                    string json = File.ReadAllText(openFileDialog.FileName);
+                    ViewModel.World = JsonConvert.DeserializeObject<World>(json);
+                    ViewModel.filename = openFileDialog.FileName;
+                    _IsWorldLoaded = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ZorkBuilder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void SaveToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e) => ViewModel.SaveWorld(ViewModel.filename);
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented");
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ViewModel.filename = saveFileDialog.FileName;
+                ViewModel.SaveWorld(ViewModel.filename);
+            }
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        private void MenuSaveToolStripMenuItem_Click(object sender, EventArgs e) => ViewModel.SaveWorld(ViewModel.filename);
+        #endregion
 
         private void AddRoom_Click(object sender, EventArgs e)
         {
@@ -58,5 +127,27 @@ namespace Zork_Builder
                 }
             }
         }
+
+        private void RoomListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DeleteRoomButton.Enabled = RoomListBox.SelectedItem != null;
+        }
+
+        private void DeleteRoomButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete the room?", AssemblyTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ViewModel.Rooms.Remove((Room)RoomListBox.SelectedItem);
+                RoomListBox.SelectedItem = ViewModel.Rooms.FirstOrDefault();
+            }
+        }
+
+        private bool _IsWorldLoaded;
+
+        private WorldViewModel _ViewModel;
+
+        private Control[] _WorldDependentControls;
+        
+        private ToolStripMenuItem[] _WorldDependentMenuItems;
     }
 }

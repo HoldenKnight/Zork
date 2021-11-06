@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.ComponentModel;
 
 namespace Zork
 {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public World World { get; private set; }
 
         [JsonIgnore]

@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 using Newtonsoft.Json;
+using System;
 
 namespace Zork
 {
-    public class World
+    public class World : INotifyPropertyChanged 
     {
-        public HashSet<Room> Rooms { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public List<Room> Rooms { get; set; }
 
         [JsonIgnore]
         public Dictionary<string, Room> RoomsByName => mRoomsByName;
@@ -17,7 +21,14 @@ namespace Zork
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
-            mRoomsByName = Rooms.ToDictionary(room => room.Name, room => room); 
+            //try
+            //{
+                mRoomsByName = Rooms.ToDictionary(room => room.Name, room => room);
+            //}
+            //catch (ArgumentNullException)
+            //{
+            //    return;
+            //}
 
             foreach (Room room in Rooms)
             {
