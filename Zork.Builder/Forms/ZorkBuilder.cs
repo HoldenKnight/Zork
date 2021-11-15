@@ -27,18 +27,18 @@ namespace Zork_Builder
 
         private bool IsWorldLoaded
         {
-            get => _IsWorldLoaded;
+            get => _IsGameLoaded;
             set
             {
-                _IsWorldLoaded = value;
+                _IsGameLoaded = value;
                 foreach (var control in _WorldDependentControls)
                 {
-                    control.Enabled = _IsWorldLoaded;
+                    control.Enabled = _IsGameLoaded;
                 }
 
                 foreach (var MenuItem in _WorldDependentMenuItems)
                 {
-                    MenuItem.Enabled = _IsWorldLoaded;
+                    MenuItem.Enabled = _IsGameLoaded;
                 }
             }
         }
@@ -78,9 +78,9 @@ namespace Zork_Builder
                 try
                 {
                     string json = File.ReadAllText(openFileDialog.FileName);
-                    ViewModel.World = JsonConvert.DeserializeObject<World>(json);
+                    ViewModel.Game = JsonConvert.DeserializeObject<Game>(json);
                     ViewModel.filename = openFileDialog.FileName;
-                    _IsWorldLoaded = true;
+                    _IsGameLoaded = true;
                 }
                 catch (Exception ex)
                 {
@@ -141,7 +141,7 @@ namespace Zork_Builder
         }
         #endregion
 
-        private bool _IsWorldLoaded;
+        private bool _IsGameLoaded;
 
         private WorldViewModel _ViewModel;
 

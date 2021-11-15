@@ -14,12 +14,12 @@ namespace Zork_Builder
 
         public string filename { get; set; }
 
-        private bool IsWorldLoaded
+        private bool IsGameLoaded
         {
-            get => _IsWorldLoaded;
+            get => _IsGameLoaded;
             set
             {
-                _IsWorldLoaded = value;
+                _IsGameLoaded = value;
             }
         }
 
@@ -27,24 +27,24 @@ namespace Zork_Builder
 
         //public BindingList<StartingLocation> StartingLocations { get; set; }
 
-        public World World
+        public Game Game
         {
             set
             {
-                if (_World != value)
+                if (_Game != value)
                 {
-                    _World = value;
-                    if (_World != null)
+                    _Game = value;
+                    if (_Game != null)
                     {
-                        Rooms = new BindingList<Room>(_World.Rooms);
+                        Rooms = new BindingList<Room>(_Game.World.Rooms);
                         //StartingLocations = new BindingList<StartingLocation>((IList<StartingLocation>)_World.StartingLocations);
-                        _IsWorldLoaded = true;
+                        _IsGameLoaded = true;
                     }
                     else
                     {
                         Rooms = new BindingList<Room>(Array.Empty<Room>());
                         //StartingLocations = new BindingList<StartingLocation>(Array.Empty<StartingLocation>());
-                        _IsWorldLoaded = false;
+                        _IsGameLoaded = false;
                     }
                 }
             }
@@ -52,7 +52,7 @@ namespace Zork_Builder
 
         public void SaveWorld(string filename)
         {
-            if (!_IsWorldLoaded)
+            if (!_IsGameLoaded)
             {
                 throw new InvalidOperationException("World isn't loaded.");
             }
@@ -69,12 +69,12 @@ namespace Zork_Builder
             using (StreamWriter streamWriter = new StreamWriter(filename))
             using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
             {
-                serializer.Serialize(jsonWriter, _World);
+                serializer.Serialize(jsonWriter, _Game);
             }
         }
 
-        private World _World;
+        private Game _Game;
 
-        private bool _IsWorldLoaded;
+        private bool _IsGameLoaded;
     }
 }

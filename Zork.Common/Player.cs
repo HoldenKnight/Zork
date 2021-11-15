@@ -1,19 +1,31 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using Newtonsoft.Json;
 
 namespace Zork
 {
-    public class Player : INotifyPropertyChanged
+    public class Player
     {
-#pragma warning disable CS0067
-        public event PropertyChangedEventHandler PropertyChanged;
-#pragma warning restore CS0067
+        public event EventHandler<Room> LocationChanged;
 
         public World World { get; }
 
         [JsonIgnore]
-        public Room Location { get; private set; }
+        public Room Location 
+        {
+            get
+            {
+                return _location;
+            }
+
+            private set
+                {
+                    if (_location != null)
+                    {
+                        _location = value;
+                        LocationChanged?.Invoke(this, _location);
+                    }
+                } 
+        }
 
         [JsonIgnore]
         public string LocationName
@@ -44,5 +56,7 @@ namespace Zork
 
             return isValidMove;
         }
+
+        private Room _location;
     }
 }

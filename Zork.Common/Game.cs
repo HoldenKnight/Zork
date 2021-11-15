@@ -16,8 +16,12 @@ namespace Zork
         [JsonIgnore]
         public Player Player { get; private set; }
 
+        public IInputService Input { get; set; }
+
+        public IOutputService Output { get; set; }
+
         [JsonIgnore]
-        private bool IsRunning { get; set; }
+        public bool IsRunning { get; set; }
 
         public Game(World world, Player player)
         {
@@ -25,56 +29,58 @@ namespace Zork
             Player = player;
         }
 
-        public void Run()
+        public void Start(IInputService input, IOutputService output)
         {
-            IsRunning = true;
-            Room previousRoom = null;
-            while (IsRunning) 
+            if (input != null)
             {
-                Console.WriteLine(Player.LocationName);
-                if (previousRoom != Player.Location)
-                {
-                    Console.WriteLine(Player.Location.Description);
-                    previousRoom = Player.Location;
-                }
-
-                Console.Write("> ");
-                Commands command = ToCommand(Console.ReadLine().Trim());
-
-                string outputString = "";
-                switch (command)
-                {
-                    case Commands.QUIT:
-                        outputString = "Thank you for playing";
-                        IsRunning = false;
-                        break;
-                    case Commands.LOOK:
-                        outputString = $"{Player.Location.Description}";
-                        break;
-                    case Commands.NORTH:
-                    case Commands.SOUTH:
-                    case Commands.EAST:
-                    case Commands.WEST:
-                        Directions direction = (Directions)command;
-                        if (Player.Move(direction) == false)
-                        {
-                            outputString = "The way is shut!";
-                        }
-                        break;
-                    default:
-                        outputString = ("Unrecognized command.");
-                        break;
-                }
-
-                Console.WriteLine(outputString);
+                Input = input;
+                Input.InputRecieved += InputRecievedHandler; ;
             }
 
+            if (output != null)
+            {
+                Output = output;
+            }
+
+            IsRunning = true;
         }
 
-        public static Game Load(string filename)
+        private void InputRecievedHandler(object sender, string commandString)
+        {
+            Commands command = ToCommand(Console.ReadLine().Trim());
+
+            string outputString = "";
+            switch (command)
+            {
+                case Commands.QUIT:
+                    IsRunning = false;
+                    break;
+                case Commands.LOOK:
+                    outputString = $"{Player.Location.Description}";
+                    break;
+                case Commands.NORTH:
+                case Commands.SOUTH:
+                case Commands.EAST:
+                case Commands.WEST:
+                    Directions direction = (Directions)command;
+                    if (Player.Move(direction) == false)
+                    {
+                        outputString = "The way is shut!";
+                    }
+                    break;
+                default:
+                    outputString = ("Unrecognized command.");
+                    break;
+            }
+
+            Output.WriteLine(outputString);
+        }
+
+        public static Game Load(string filename, IOutputService output)
         {
             Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
             game.Player = game.World.SpawnPlayer();
+            game.Output = output;
             return game;
         }
 
