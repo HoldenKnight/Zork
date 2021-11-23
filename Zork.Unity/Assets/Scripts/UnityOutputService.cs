@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zork;
 
@@ -10,20 +8,30 @@ public class UnityOutputService : MonoBehaviour, IOutputService
         throw new System.NotImplementedException();
     }
 
+    public void Write(string value)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void WriteLine(object value)
     {
         throw new System.NotImplementedException();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void WriteLine(string value)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private TextMesh outputtext;
+
+    [SerializeField]
+    private TextMesh locationtext;
+
+    [SerializeField]
+    private TextMesh movestext;
+
+    [SerializeField]
+    private TextMesh scoretext;
 }

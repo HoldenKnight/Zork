@@ -11,6 +11,12 @@ namespace Zork
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore CS0067
 
+        public event EventHandler<float> MovesIncreased;
+        
+        public event EventHandler<float> ScoreIncreased;
+
+        public event EventHandler GameStopped;
+
         public World World { get; private set; }
 
         [JsonIgnore]
@@ -19,6 +25,10 @@ namespace Zork
         public IInputService Input { get; set; }
 
         public IOutputService Output { get; set; }
+
+        public float Moves { get; set; }
+
+        public float Score { get; set; }
 
         [JsonIgnore]
         public bool IsRunning { get; set; }
@@ -54,9 +64,12 @@ namespace Zork
             {
                 case Commands.QUIT:
                     IsRunning = false;
+                    GameStopped?.Invoke(this, EventArgs.Empty);
                     break;
                 case Commands.LOOK:
                     outputString = $"{Player.Location.Description}";
+                    Moves++;
+                    MovesIncreased?.Invoke(this, Moves);
                     break;
                 case Commands.NORTH:
                 case Commands.SOUTH:
@@ -67,6 +80,18 @@ namespace Zork
                     {
                         outputString = "The way is shut!";
                     }
+                    Moves++;
+                    break;
+                case Commands.REWARD:
+                    Score = Score + 5;
+                    Moves++;
+                    ScoreIncreased?.Invoke(this, Score);
+                    MovesIncreased?.Invoke(this, Moves);
+                    break;
+                case Commands.SCORE:
+                    outputString = "${ Score}";
+                    Moves++;
+                    MovesIncreased?.Invoke(this, Moves);
                     break;
                 default:
                     outputString = ("Unrecognized command.");
@@ -83,7 +108,7 @@ namespace Zork
             game.Output = output;
             return game;
         }
-
+        
         private static Commands ToCommand(string commandString)
         {
             return Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN;

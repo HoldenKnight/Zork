@@ -1,22 +1,22 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Zork;
 
 public class UnityInputService : MonoBehaviour, IInputService
 {
     public event EventHandler<string> InputRecieved;
 
-    // Start is called before the first frame update
-    void Start()
+    internal void ProcessInput()
     {
-        
+        if (string.IsNullOrWhiteSpace(InputField.text) == false)
+        {
+            InputRecieved?.Invoke(this, InputField.text);
+        }
+
+        InputField.text = string.Empty;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private InputField InputField;
 }
