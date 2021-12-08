@@ -1,0 +1,14 @@
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\RiotAPIAplication.exe.config
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\RiotAPIAplication.exe
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\RiotAPIAplication.pdb
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\Camille.dll
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\Newtonsoft.Json.dll
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\bin\Debug\Newtonsoft.Json.xml
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIApplication.csproj.AssemblyReference.cache
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIAplication.Properties.Resources.resources
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIApplication.csproj.GenerateResource.cache
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIApplication.csproj.CoreCompileInputs.cache
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIApplication.csproj.CopyComplete
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIAplication.exe
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIAplication.pdb
+C:\Users\holde\OneDrive\Documents\GitHub\Zork\RiotAPIAplication\RiotAPIAplication\obj\Debug\RiotAPIAplication.LeagueOfLegendAPIForm.resources
