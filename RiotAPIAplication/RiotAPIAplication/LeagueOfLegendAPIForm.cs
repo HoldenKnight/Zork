@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MingweiSamuel.Camille;
-using MingweiSamuel.Camille.Enums;
 using MingweiSamuel.Camille.SummonerV4;
 
 namespace RiotAPIAplication
@@ -33,12 +26,8 @@ namespace RiotAPIAplication
                 aPISummonerNameResultsRichTextBox.Text = $"{summoner.Name}, \n{summoner.SummonerLevel}, \n{summoner.Puuid}";
                 
                 puuidMatchInputText = puuidMatchInputTextBox1.Text = summoner.Puuid;
-                matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
-                matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
-                
-                matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
-                var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
-                matchDetailRichTextBox.Text = selectedMatch.ToString();
+                puuidMatchInputSubmitted();
+                matchIDSubmitted();
             }
         }
 
@@ -52,21 +41,12 @@ namespace RiotAPIAplication
             if (summonerName != null)
             {
                 summoner = riotApi.SummonerV4.GetByPUUID(MingweiSamuel.Camille.Enums.Region.NA, puuidAccountInput);
-                aPISummonerNameResultsRichTextBox.Text = $"{summoner.Name}, \n{summoner.SummonerLevel}, \n{summoner.Puuid}";
+                puuidAccountDetailsRichTextBox.Text = $"{summoner.Name}, \n{summoner.SummonerLevel}, \n{summoner.Puuid}";
 
                 puuidMatchInputText = puuidMatchInputTextBox1.Text = summoner.Puuid;
-                matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
-                matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
-
-                matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
-                var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
-                matchDetailRichTextBox.Text = selectedMatch.ToString();
+                puuidMatchInputSubmitted();
+                matchIDSubmitted();
             }
-        }
-
-        private void aPICodeTextBox_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void puuidMatchInputTextBox1_TextChanged(object sender, EventArgs e)
@@ -76,12 +56,8 @@ namespace RiotAPIAplication
 
         private void puuidMatchInputButton_Click(object sender, EventArgs e)
         {
-            matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
-            matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
-
-            matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
-            var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
-            matchDetailRichTextBox.Text = selectedMatch.ToString();
+            puuidMatchInputSubmitted();
+            matchIDSubmitted();
         }
         private void matchInputTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -90,14 +66,26 @@ namespace RiotAPIAplication
 
         private void matchInputButton_Click(object sender, EventArgs e)
         {
+            matchIDSubmitted();
+        }
+
+        public void matchIDSubmitted()
+        {
             var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
             matchDetailRichTextBox.Text = selectedMatch.ToString();
+        }
+
+        public void puuidMatchInputSubmitted()
+        {
+            matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
+            matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
+
+            matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
         }
 
         Summoner summoner;
         string puuidMatchInputText;
         string matchID;
-        string developersCode = "RGAPI-f3b13696-06e3-4b68-8173-cff02593adcb";
         string summonerName;
         string puuidAccountInput;
         string[] matchEntries;

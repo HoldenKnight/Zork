@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj": {}
+    "C:\\Users\\holde\\OneDrive\\Documents\\GitHub\\Zork\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj": {}
   },
   "projects": {
-    "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj": {
+    "C:\\Users\\holde\\OneDrive\\Documents\\GitHub\\Zork\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj",
+        "projectUniqueName": "C:\\Users\\holde\\OneDrive\\Documents\\GitHub\\Zork\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj",
         "projectName": "RiotAPITesting",
-        "projectPath": "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj",
+        "projectPath": "C:\\Users\\holde\\OneDrive\\Documents\\GitHub\\Zork\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj",
         "packagesPath": "C:\\Users\\holde\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\obj\\",
+        "outputPath": "C:\\Users\\holde\\OneDrive\\Documents\\GitHub\\Zork\\RiotAPITesting\\RiotAPITesting\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

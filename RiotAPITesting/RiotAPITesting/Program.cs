@@ -35,6 +35,7 @@ namespace RiotAPITesting
                 Console.WriteLine(matchID);
                 var selectedMatch = riotApi.MatchV5.GetMatch(Region.Americas, matchID);
                 Console.WriteLine(selectedMatch);
+                //riotApi.MatchV5.GetMatch._AdditionalProperties
             }
         }
     }
