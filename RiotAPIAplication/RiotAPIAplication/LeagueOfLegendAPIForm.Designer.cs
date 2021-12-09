@@ -37,13 +37,9 @@ namespace RiotAPIAplication
             this.summonerInputsTabControl = new System.Windows.Forms.TabControl();
             this.summonersNameTabPage = new System.Windows.Forms.TabPage();
             this.summonersNameInputButton = new System.Windows.Forms.Button();
-            this.summonersNameRegionComboBox = new System.Windows.Forms.ComboBox();
-            this.summonersNameRegionLabel = new System.Windows.Forms.Label();
             this.aPISummonerNameResultsRichTextBox = new System.Windows.Forms.RichTextBox();
             this.summonersNameInputTextBox = new System.Windows.Forms.TextBox();
             this.puuidInputTabPage = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.puuidInputRegionLabel = new System.Windows.Forms.Label();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.accountDetailsLabel = new System.Windows.Forms.Label();
             this.puuidAccountInputLabel = new System.Windows.Forms.Label();
@@ -61,6 +57,10 @@ namespace RiotAPIAplication
             this.matchDetailslabel = new System.Windows.Forms.Label();
             this.matchInputLabel = new System.Windows.Forms.Label();
             this.accountInputGroupBox = new System.Windows.Forms.GroupBox();
+            this.puuidAccountInputButton = new System.Windows.Forms.Button();
+            this.puuidMatchInputButton = new System.Windows.Forms.Button();
+            this.matchInputButton = new System.Windows.Forms.Button();
+            this.aPICodeTextBox = new System.Windows.Forms.ToolStripTextBox();
             summonerNameInputLabel = new System.Windows.Forms.Label();
             aPISummonerNameResultsLabel = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
@@ -92,11 +92,11 @@ namespace RiotAPIAplication
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             aPISummonerNameResultsLabel.AutoSize = true;
-            aPISummonerNameResultsLabel.Location = new System.Drawing.Point(6, 111);
+            aPISummonerNameResultsLabel.Location = new System.Drawing.Point(6, 59);
             aPISummonerNameResultsLabel.Name = "aPISummonerNameResultsLabel";
-            aPISummonerNameResultsLabel.Size = new System.Drawing.Size(55, 17);
+            aPISummonerNameResultsLabel.Size = new System.Drawing.Size(106, 17);
             aPISummonerNameResultsLabel.TabIndex = 4;
-            aPISummonerNameResultsLabel.Text = "Results";
+            aPISummonerNameResultsLabel.Text = "Account Details";
             // 
             // menuStrip
             // 
@@ -119,9 +119,11 @@ namespace RiotAPIAplication
             // 
             // aPICodeToolStripMenuItem
             // 
+            this.aPICodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aPICodeTextBox});
             this.aPICodeToolStripMenuItem.Name = "aPICodeToolStripMenuItem";
-            this.aPICodeToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
-            this.aPICodeToolStripMenuItem.Text = "API Code";
+            this.aPICodeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aPICodeToolStripMenuItem.Text = "API Key";
             // 
             // summonerInputsTabControl
             // 
@@ -137,8 +139,6 @@ namespace RiotAPIAplication
             // summonersNameTabPage
             // 
             this.summonersNameTabPage.Controls.Add(this.summonersNameInputButton);
-            this.summonersNameTabPage.Controls.Add(this.summonersNameRegionComboBox);
-            this.summonersNameTabPage.Controls.Add(this.summonersNameRegionLabel);
             this.summonersNameTabPage.Controls.Add(aPISummonerNameResultsLabel);
             this.summonersNameTabPage.Controls.Add(summonerNameInputLabel);
             this.summonersNameTabPage.Controls.Add(this.aPISummonerNameResultsRichTextBox);
@@ -161,34 +161,16 @@ namespace RiotAPIAplication
             this.summonersNameInputButton.UseVisualStyleBackColor = true;
             this.summonersNameInputButton.Click += new System.EventHandler(this.summonersNameInputButton_Click);
             // 
-            // summonersNameRegionComboBox
-            // 
-            this.summonersNameRegionComboBox.FormattingEnabled = true;
-            this.summonersNameRegionComboBox.Location = new System.Drawing.Point(9, 79);
-            this.summonersNameRegionComboBox.Name = "summonersNameRegionComboBox";
-            this.summonersNameRegionComboBox.Size = new System.Drawing.Size(180, 24);
-            this.summonersNameRegionComboBox.TabIndex = 6;
-            // 
-            // summonersNameRegionLabel
-            // 
-            this.summonersNameRegionLabel.AutoSize = true;
-            this.summonersNameRegionLabel.Location = new System.Drawing.Point(6, 59);
-            this.summonersNameRegionLabel.Name = "summonersNameRegionLabel";
-            this.summonersNameRegionLabel.Size = new System.Drawing.Size(53, 17);
-            this.summonersNameRegionLabel.TabIndex = 5;
-            this.summonersNameRegionLabel.Text = "Region";
-            // 
             // aPISummonerNameResultsRichTextBox
             // 
             this.aPISummonerNameResultsRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.aPISummonerNameResultsRichTextBox.Location = new System.Drawing.Point(9, 131);
+            this.aPISummonerNameResultsRichTextBox.Location = new System.Drawing.Point(9, 79);
             this.aPISummonerNameResultsRichTextBox.Name = "aPISummonerNameResultsRichTextBox";
-            this.aPISummonerNameResultsRichTextBox.Size = new System.Drawing.Size(294, 242);
+            this.aPISummonerNameResultsRichTextBox.Size = new System.Drawing.Size(288, 294);
             this.aPISummonerNameResultsRichTextBox.TabIndex = 2;
-            this.aPISummonerNameResultsRichTextBox.Text = "one\ntwo\nthree\nfour\nfive\nsix\nseven";
-            this.aPISummonerNameResultsRichTextBox.TextChanged += new System.EventHandler(this.aPISummonerNameResultsRichTextBox_TextChanged);
+            this.aPISummonerNameResultsRichTextBox.Text = "";
             // 
             // summonersNameInputTextBox
             // 
@@ -203,8 +185,7 @@ namespace RiotAPIAplication
             // 
             // puuidInputTabPage
             // 
-            this.puuidInputTabPage.Controls.Add(this.comboBox1);
-            this.puuidInputTabPage.Controls.Add(this.puuidInputRegionLabel);
+            this.puuidInputTabPage.Controls.Add(this.puuidAccountInputButton);
             this.puuidInputTabPage.Controls.Add(this.richTextBox2);
             this.puuidInputTabPage.Controls.Add(this.accountDetailsLabel);
             this.puuidInputTabPage.Controls.Add(this.puuidAccountInputLabel);
@@ -217,31 +198,14 @@ namespace RiotAPIAplication
             this.puuidInputTabPage.Text = "puuid Input";
             this.puuidInputTabPage.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 24);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // puuidInputRegionLabel
-            // 
-            this.puuidInputRegionLabel.AutoSize = true;
-            this.puuidInputRegionLabel.Location = new System.Drawing.Point(6, 59);
-            this.puuidInputRegionLabel.Name = "puuidInputRegionLabel";
-            this.puuidInputRegionLabel.Size = new System.Drawing.Size(53, 17);
-            this.puuidInputRegionLabel.TabIndex = 4;
-            this.puuidInputRegionLabel.Text = "Region";
-            // 
             // richTextBox2
             // 
             this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox2.Location = new System.Drawing.Point(9, 131);
+            this.richTextBox2.Location = new System.Drawing.Point(9, 79);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(294, 242);
+            this.richTextBox2.Size = new System.Drawing.Size(288, 294);
             this.richTextBox2.TabIndex = 3;
             this.richTextBox2.Text = "";
             // 
@@ -251,7 +215,7 @@ namespace RiotAPIAplication
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.accountDetailsLabel.AutoSize = true;
-            this.accountDetailsLabel.Location = new System.Drawing.Point(6, 111);
+            this.accountDetailsLabel.Location = new System.Drawing.Point(6, 59);
             this.accountDetailsLabel.Name = "accountDetailsLabel";
             this.accountDetailsLabel.Size = new System.Drawing.Size(106, 17);
             this.accountDetailsLabel.TabIndex = 2;
@@ -278,6 +242,7 @@ namespace RiotAPIAplication
             this.puuidAccountInputTextBox.Name = "puuidAccountInputTextBox";
             this.puuidAccountInputTextBox.Size = new System.Drawing.Size(180, 22);
             this.puuidAccountInputTextBox.TabIndex = 0;
+            this.puuidAccountInputTextBox.TextChanged += new System.EventHandler(this.puuidAccountInputTextBox_TextChanged);
             // 
             // matchInformationGroupBox
             // 
@@ -306,6 +271,7 @@ namespace RiotAPIAplication
             // 
             // puuidMatchTabPage
             // 
+            this.puuidMatchTabPage.Controls.Add(this.puuidMatchInputButton);
             this.puuidMatchTabPage.Controls.Add(this.matchListRichTextBox);
             this.puuidMatchTabPage.Controls.Add(this.puuidSummonerInputLabel);
             this.puuidMatchTabPage.Controls.Add(this.matchListLabel);
@@ -324,8 +290,7 @@ namespace RiotAPIAplication
             this.matchListRichTextBox.Name = "matchListRichTextBox";
             this.matchListRichTextBox.Size = new System.Drawing.Size(387, 294);
             this.matchListRichTextBox.TabIndex = 3;
-            this.matchListRichTextBox.Text = "one\ntwo\nthree\nfour\nfive\nsix\nseven";
-            this.matchListRichTextBox.TextChanged += new System.EventHandler(this.matchListRichTextBox_TextChanged);
+            this.matchListRichTextBox.Text = "";
             // 
             // puuidSummonerInputLabel
             // 
@@ -364,6 +329,7 @@ namespace RiotAPIAplication
             // 
             // matchDetailTabPage
             // 
+            this.matchDetailTabPage.Controls.Add(this.matchInputButton);
             this.matchDetailTabPage.Controls.Add(this.matchDetailRichTextBox);
             this.matchDetailTabPage.Controls.Add(this.matchInputTextBox);
             this.matchDetailTabPage.Controls.Add(this.matchDetailslabel);
@@ -386,7 +352,6 @@ namespace RiotAPIAplication
             this.matchDetailRichTextBox.Size = new System.Drawing.Size(387, 304);
             this.matchDetailRichTextBox.TabIndex = 3;
             this.matchDetailRichTextBox.Text = "";
-            this.matchDetailRichTextBox.TextChanged += new System.EventHandler(this.matchDetailRichTextBox_TextChanged);
             // 
             // matchInputTextBox
             // 
@@ -436,6 +401,43 @@ namespace RiotAPIAplication
             this.accountInputGroupBox.TabIndex = 6;
             this.accountInputGroupBox.TabStop = false;
             this.accountInputGroupBox.Text = "Account Input";
+            // 
+            // puuidAccountInputButton
+            // 
+            this.puuidAccountInputButton.Location = new System.Drawing.Point(217, 23);
+            this.puuidAccountInputButton.Name = "puuidAccountInputButton";
+            this.puuidAccountInputButton.Size = new System.Drawing.Size(75, 23);
+            this.puuidAccountInputButton.TabIndex = 6;
+            this.puuidAccountInputButton.Text = "Submit";
+            this.puuidAccountInputButton.UseVisualStyleBackColor = true;
+            this.puuidAccountInputButton.Click += new System.EventHandler(this.puuidAccountInputButton_Click);
+            // 
+            // puuidMatchInputButton
+            // 
+            this.puuidMatchInputButton.Location = new System.Drawing.Point(217, 23);
+            this.puuidMatchInputButton.Name = "puuidMatchInputButton";
+            this.puuidMatchInputButton.Size = new System.Drawing.Size(75, 23);
+            this.puuidMatchInputButton.TabIndex = 4;
+            this.puuidMatchInputButton.Text = "Submit";
+            this.puuidMatchInputButton.UseVisualStyleBackColor = true;
+            this.puuidMatchInputButton.Click += new System.EventHandler(this.puuidMatchInputButton_Click);
+            // 
+            // matchInputButton
+            // 
+            this.matchInputButton.Location = new System.Drawing.Point(217, 23);
+            this.matchInputButton.Name = "matchInputButton";
+            this.matchInputButton.Size = new System.Drawing.Size(75, 23);
+            this.matchInputButton.TabIndex = 4;
+            this.matchInputButton.Text = "Submit";
+            this.matchInputButton.UseVisualStyleBackColor = true;
+            this.matchInputButton.Click += new System.EventHandler(this.matchInputButton_Click);
+            // 
+            // aPICodeTextBox
+            // 
+            this.aPICodeTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.aPICodeTextBox.Name = "aPICodeTextBox";
+            this.aPICodeTextBox.Size = new System.Drawing.Size(100, 27);
+            this.aPICodeTextBox.Click += new System.EventHandler(this.aPICodeTextBox_Click);
             // 
             // LeagueOfLegendAPIForm
             // 
@@ -494,11 +496,11 @@ namespace RiotAPIAplication
         private System.Windows.Forms.Label matchDetailslabel;
         private System.Windows.Forms.Label matchInputLabel;
         private System.Windows.Forms.GroupBox accountInputGroupBox;
-        private System.Windows.Forms.ComboBox summonersNameRegionComboBox;
-        private System.Windows.Forms.Label summonersNameRegionLabel;
-        private System.Windows.Forms.Label puuidInputRegionLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button summonersNameInputButton;
+        private System.Windows.Forms.Button puuidAccountInputButton;
+        private System.Windows.Forms.Button puuidMatchInputButton;
+        private System.Windows.Forms.Button matchInputButton;
+        private System.Windows.Forms.ToolStripTextBox aPICodeTextBox;
     }
 }
 

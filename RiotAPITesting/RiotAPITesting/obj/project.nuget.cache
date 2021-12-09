@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "S6tanviuZO/oHsCVbM9S3Vb20Tz+xpNuyjTnfP+SxSSPQxOgDs6CVDRRZOzs5W2M7AIeQQGoSM4//+bFTxPYpQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\holde\\OneDrive\\Documents\\RiotAPITesting\\RiotAPITesting\\RiotAPITesting.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\holde\\.nuget\\packages\\mingweisamuel.camille\\2.8.0\\mingweisamuel.camille.2.8.0.nupkg.sha512"
+  ],
+  "logs": []
+}

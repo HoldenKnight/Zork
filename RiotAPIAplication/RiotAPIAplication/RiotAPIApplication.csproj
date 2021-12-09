@@ -95,7 +95,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RiotViewModel.cs" />
     <EmbeddedResource Include="LeagueOfLegendAPIForm.resx">
       <DependentUpon>LeagueOfLegendAPIForm.cs</DependentUpon>
     </EmbeddedResource>

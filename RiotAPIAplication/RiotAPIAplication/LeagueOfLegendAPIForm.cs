@@ -25,26 +25,46 @@ namespace RiotAPIAplication
             summonerName = summonersNameInputTextBox.Text;
         }
 
-        //string developersCode = "RGAPI-f3b13696-06e3-4b68-8173-cff02593adcb";
-        string summonerName = null;
-
         private void summonersNameInputButton_Click(object sender, EventArgs e)
         {
             if (summonerName != null)
             {
-                Summoner summoner = riotApi.SummonerV4.GetBySummonerName(MingweiSamuel.Camille.Enums.Region.NA, summonerName);
+                summoner = riotApi.SummonerV4.GetBySummonerName(MingweiSamuel.Camille.Enums.Region.NA, summonerName);
                 aPISummonerNameResultsRichTextBox.Text = $"{summoner.Name}, \n{summoner.SummonerLevel}, \n{summoner.Puuid}";
+                
                 puuidMatchInputText = puuidMatchInputTextBox1.Text = summoner.Puuid;
-                string[] matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
+                matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
                 matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
+                
                 matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
                 var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
                 matchDetailRichTextBox.Text = selectedMatch.ToString();
             }
         }
-        RiotApi riotApi = RiotApi.NewInstance("RGAPI-f3b13696-06e3-4b68-8173-cff02593adcb");
 
-        private void aPISummonerNameResultsRichTextBox_TextChanged(object sender, EventArgs e)
+        private void puuidAccountInputTextBox_TextChanged(object sender, EventArgs e)
+        {
+            puuidAccountInput = puuidAccountInputTextBox.Text;
+        }
+
+        private void puuidAccountInputButton_Click(object sender, EventArgs e)
+        {
+            if (summonerName != null)
+            {
+                summoner = riotApi.SummonerV4.GetByPUUID(MingweiSamuel.Camille.Enums.Region.NA, puuidAccountInput);
+                aPISummonerNameResultsRichTextBox.Text = $"{summoner.Name}, \n{summoner.SummonerLevel}, \n{summoner.Puuid}";
+
+                puuidMatchInputText = puuidMatchInputTextBox1.Text = summoner.Puuid;
+                matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
+                matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
+
+                matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
+                var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
+                matchDetailRichTextBox.Text = selectedMatch.ToString();
+            }
+        }
+
+        private void aPICodeTextBox_Click(object sender, EventArgs e)
         {
 
         }
@@ -53,22 +73,34 @@ namespace RiotAPIAplication
         {
             puuidMatchInputText = puuidMatchInputTextBox1.Text;
         }
-        string puuidMatchInputText;
-        string matchID;
 
-        private void matchListRichTextBox_TextChanged(object sender, EventArgs e)
+        private void puuidMatchInputButton_Click(object sender, EventArgs e)
         {
+            matchEntries = riotApi.MatchV5.GetMatchIdsByPUUID(MingweiSamuel.Camille.Enums.Region.Americas, puuidMatchInputText);
+            matchListRichTextBox.Text = string.Join(Environment.NewLine, matchEntries);
 
+            matchID = matchInputTextBox.Text = matchEntries.FirstOrDefault();
+            var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
+            matchDetailRichTextBox.Text = selectedMatch.ToString();
         }
-
         private void matchInputTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            matchID = matchInputTextBox.Text;
         }
 
-        private void matchDetailRichTextBox_TextChanged(object sender, EventArgs e)
+        private void matchInputButton_Click(object sender, EventArgs e)
         {
-
+            var selectedMatch = riotApi.MatchV5.GetMatch(MingweiSamuel.Camille.Enums.Region.Americas, matchID);
+            matchDetailRichTextBox.Text = selectedMatch.ToString();
         }
+
+        Summoner summoner;
+        string puuidMatchInputText;
+        string matchID;
+        string developersCode = "RGAPI-f3b13696-06e3-4b68-8173-cff02593adcb";
+        string summonerName;
+        string puuidAccountInput;
+        string[] matchEntries;
+        RiotApi riotApi = RiotApi.NewInstance("RGAPI-f3b13696-06e3-4b68-8173-cff02593adcb");
     }
 }
